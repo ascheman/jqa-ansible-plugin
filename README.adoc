@@ -1,0 +1,69 @@
+= jQAssistant Ansible Plugin
+:author: Gerd Aschemann
+:email: gerd@aschemann.net
+
+:toc: left
+
+Plugin for https://jqassistant.org[jQAssistant] (jQA), a tool suite to analyze arbitrary software structures (Java and other source code, dependencies, Git repositories, and many more).
+Enables to scan https://www.ansible.com/[Ansible] repositories for further analysis and reporting.
+
+Based on
+
+* the great https://101.jqassistant.org/implementation-of-a-scanner-plugin/[101 Tutorial to write a jQAssistant Plugins],
+* the nice https://gitlab.com/ilpianista/ansible-inventory-java/[Ansible Inventory Java] package.
+
+[CAUTION]
+====
+The plugin is currently only a starting point to scan Ansible repositories for jQA.
+In fact, it only allows to scan Ansible local inventories to jQA.
+Scanning of Ansible roles, playbooks etc. is currently left to an extended version of the https://github.com/jQAssistant/jqa-yaml2-plugin/[jQA YAML2 Plugin].
+
+Analysis of and reasoning about the Ansible repository is (yet) completely open.
+
+_Therefore, the plugin has a 0-version until it's first official release, expect changes in the API and implementation without prior notice._
+====
+
+== Getting started
+
+=== Build / Install
+
+Currently it is necessary to build it locally:
+
+* Clone and build https://gitlab.com/ascheman/ansible-inventory-java/[my version] of https://gitlab.com/ilpianista/ansible-inventory-java/[Ansible Inventory Java]:
+** `git clone https://gitlab.com/ascheman/ansible-inventory-java`
+** `(cd ansible-inventory-java && mvn clean install)`
+* Clone and build the plugin itself
+** `git clone https://github.com/ascheman/jqa-ansible-plugin`
+** `(cd jqa-ansible-plugin && mvn clean install)`
+
+=== Usage
+
+Use in your Ansible project as any other jQA plugin, e.g.,
+
+[source, xml]
+.pom.xml (part)
+----
+...
+        <plugins>
+            <plugin>
+                <groupId>com.buschmais.jqassistant</groupId>
+                <artifactId>jqassistant-maven-plugin</artifactId>
+                <version>1.10-SNAPSHOT</version>
+...
+                <dependencies>
+...
+                    <dependency>
+                        <groupId>net.aschemann.jqassistant.plugins</groupId>
+                        <artifactId>jqa-ansible-plugin</artifactId>
+                        <version>0.1.0-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+...
+----
+
+It will detect your Ansible inventories (and the included hosts, groups, variables, and subgroups) and add them to Neo4j database.
+
+== Examples
+
+Find an     example at https://github.com/ascheman/ansible-for-devops/tree/master/lamp-infrastructure.

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.aschemann.jqassistant.plugins</groupId>
+    <artifactId>jqa-ansible-plugin</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+
+    <name>jQAssistant Ansible Plugin</name>
+    <description>Ansible (Inventory) scanner for jQAssistant</description>
+    <url>https://aschemann.net/</url>
+    <inceptionYear>2021</inceptionYear>
+
+    <organization>
+        <name>Gerd Aschemann (Freelancer)</name>
+        <url>https://aschemann.net/</url>
+    </organization>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+
+        <ansible-inventory-java.version>1.0-SNAPSHOT</ansible-inventory-java.version>
+        <assertj-core.version>3.14.0</assertj-core.version>
+        <jqa.version>1.10.0-SNAPSHOT</jqa.version>
+        <junit-jupiter-engine.version>5.5.2</junit-jupiter-engine.version>
+        <slf4j-simple.version>1.8.0-beta4</slf4j-simple.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.buschmais.jqassistant.core</groupId>
+            <artifactId>scanner</artifactId>
+            <version>${jqa.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.buschmais.jqassistant.plugin</groupId>
+            <artifactId>common</artifactId>
+            <version>${jqa.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>it.andreascarpino</groupId>
+            <artifactId>ansible-inventory-java</artifactId>
+            <version>${ansible-inventory-java.version}</version>
+        </dependency>
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>com.buschmais.jqassistant.core</groupId>
+            <artifactId>plugin</artifactId>
+            <version>${jqa.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.buschmais.jqassistant.neo4jserver</groupId>
+            <artifactId>neo4jv3</artifactId>
+            <version>${jqa.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.buschmais.jqassistant.plugin</groupId>
+            <artifactId>common</artifactId>
+            <type>test-jar</type>
+            <version>${jqa.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter-engine.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j-simple.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
