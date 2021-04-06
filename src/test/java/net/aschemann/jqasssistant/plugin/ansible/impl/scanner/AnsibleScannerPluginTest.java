@@ -24,7 +24,7 @@ public class AnsibleScannerPluginTest extends AbstractPluginIT {
         assertThat(descriptor).isInstanceOf(AnsibleInventoryDescriptor.class);
 
         AnsibleInventoryDescriptor inventory = (AnsibleInventoryDescriptor) descriptor;
-        assertThat(inventory.getHosts().size()).isEqualTo(0);
+        assertThat(inventory.getHosts().size()).isEqualTo(6);
         assertThat(inventory.getGroups().stream().filter(
                 ansibleGroupDescriptor -> ansibleGroupDescriptor.getName().equals("lamp_www")
         ).findFirst().get().getHosts().size()).isEqualTo(2);

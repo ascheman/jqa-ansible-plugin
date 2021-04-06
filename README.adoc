@@ -20,7 +20,8 @@ Scanning of Ansible roles, playbooks etc. is currently left to an extended versi
 
 Analysis of and reasoning about the Ansible repository is (yet) completely open.
 
-_Therefore, the plugin has a 0-version until it's first official release, expect changes in the API and implementation without prior notice._
+_Therefore, the plugin has a 0-version until it's first official release.
+Expect changes in the API and implementation without prior notice._
 ====
 
 == Getting started
@@ -29,9 +30,9 @@ _Therefore, the plugin has a 0-version until it's first official release, expect
 
 Currently it is necessary to build it locally:
 
-* Clone and build https://gitlab.com/ascheman/ansible-inventory-java/[my version] of https://gitlab.com/ilpianista/ansible-inventory-java/[Ansible Inventory Java]:
-** `git clone https://gitlab.com/ascheman/ansible-inventory-java`
-** `(cd ansible-inventory-java && mvn clean install)`
+* Clone and build https://github.com/ascheman/ansible-inventory-java/[Ansible Inventory Java]:
+** `git clone https://github.com/ascheman/ansible-inventory-java`
+** `(cd ansible-inventory-java && ./mvnw clean install)`
 * Clone and build the plugin itself
 ** `git clone https://github.com/ascheman/jqa-ansible-plugin`
 ** `(cd jqa-ansible-plugin && mvn clean install)`
