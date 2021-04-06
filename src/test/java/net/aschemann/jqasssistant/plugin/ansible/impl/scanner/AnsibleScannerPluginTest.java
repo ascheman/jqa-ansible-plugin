@@ -10,12 +10,13 @@ import java.io.File;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class AnsibleScannerPluginTest extends AbstractPluginIT {
+@SuppressWarnings("OptionalGetWithoutIsPresent")
+class AnsibleScannerPluginTest extends AbstractPluginIT {
 
     public static final String VAGRANT_INVENTORY = "/inventories/vagrant-inventory";
 
     @Test
-    public void scanInventoryFile() {
+    void scanInventoryFile() {
         File testFile = new File(getClassesDirectory(AnsibleScannerPluginTest.class), VAGRANT_INVENTORY);
 
         store.beginTransaction();
