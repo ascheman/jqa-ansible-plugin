@@ -165,6 +165,7 @@
                 <snapshotRepository>
                     <id>github</id>
                     <name>GitHub Packages</name>
+                    <!--suppress UnresolvedMavenProperty -->
                     <url>https://maven.pkg.github.com/${env.GITHUB_ACTOR}/${project.artifactId}</url>
                 </snapshotRepository>
             </distributionManagement>
