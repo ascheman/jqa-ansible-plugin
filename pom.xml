@@ -36,8 +36,8 @@
         <maven.compiler.target>8</maven.compiler.target>
 
         <ansible-inventory.version>1.0-SNAPSHOT</ansible-inventory.version>
-        <jqa.version>1.10.0-SNAPSHOT</jqa.version>
         <assertj-core.version>3.21.0</assertj-core.version>
+        <jqa.version>1.10.1</jqa.version>
         <junit-jupiter-engine.version>5.8.1</junit-jupiter-engine.version>
         <slf4j-simple.version>1.8.0-beta4</slf4j-simple.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
