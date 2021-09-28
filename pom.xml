@@ -6,7 +6,7 @@
 
     <groupId>net.aschemann.jqassistant.plugins</groupId>
     <artifactId>jqa-ansible-plugin</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
 
     <name>jQAssistant Ansible Plugin</name>
     <description>Ansible (Inventory) scanner for jQAssistant</description>
