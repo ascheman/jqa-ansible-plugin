@@ -152,4 +152,33 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>github</id>
+            <activation>
+                <property>
+                    <name>env.GITHUB_TOKEN</name>
+                </property>
+            </activation>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>github</id>
+                    <name>GitHub Packages</name>
+                    <url>https://maven.pkg.github.com/${env.GITHUB_ACTOR}/${project.artifactId}</url>
+                </snapshotRepository>
+            </distributionManagement>
+            <repositories>
+                <repository>
+                    <id>github</id>
+                    <name>GitHub Packages for ascheman ansible-inventory-java dependency</name>
+                    <url>https://maven.pkg.github.com/ascheman/ansible-inventory-java</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
 </project>
