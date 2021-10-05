@@ -39,11 +39,12 @@
 
         <ansible-inventory.version>1.0-SNAPSHOT</ansible-inventory.version>
         <assertj-core.version>3.21.0</assertj-core.version>
-        <jqa.version>1.10.1</jqa.version>
+        <jqa.version>1.11.0-SNAPSHOT</jqa.version>
+        <jqa-ga.version>1.11.0-GA-SNAPSHOT</jqa-ga.version>
         <junit-jupiter-engine.version>5.8.1</junit-jupiter-engine.version>
         <log4j-slf4j-impl.version>2.14.1</log4j-slf4j-impl.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-        <slf4j-simple.version>1.8.0-beta4</slf4j-simple.version>
+        <slf4j.version>1.7.30</slf4j.version>
     </properties>
 
     <repositories>
@@ -79,7 +80,29 @@
         </plugins>
     </build>
 
+<!--    <dependencyManagement>-->
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>com.buschmais.jqassistant.core</groupId>-->
+<!--                <artifactId>parent</artifactId>-->
+<!--                <version>${jqa.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
+<!--    </dependencyManagement>-->
+
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-api</artifactId>-->
+<!--            <version>${log4j-slf4j-impl.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-core</artifactId>-->
+<!--            <version>${log4j-slf4j-impl.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
@@ -92,6 +115,11 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.buschmais.jqassistant.core</groupId>
             <artifactId>scanner</artifactId>
             <version>${jqa.version}</version>
@@ -100,7 +128,7 @@
         <dependency>
             <groupId>com.buschmais.jqassistant.plugin</groupId>
             <artifactId>common</artifactId>
-            <version>${jqa.version}</version>
+            <version>${jqa-ga.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -145,12 +173,12 @@
             <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j-simple.version}</version>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-simple</artifactId>-->
+<!--            <version>${slf4j.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
     </dependencies>
 
     <profiles>

@@ -11,6 +11,7 @@
         <class>net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleVariableDescriptor</class>
     </model>
     <scanner>
-        <class>net.aschemann.jqassistant.plugin.ansible.impl.scanner.AnsibleScannerPlugin</class>
+        <class>net.aschemann.jqassistant.plugin.ansible.impl.scanner.AnsibleInventoryFileScannerPlugin</class>
+        <class>net.aschemann.jqassistant.plugin.ansible.impl.scanner.AnsibleInventoryDirectoryScannerPlugin</class>
     </scanner>
 </jqassistant-plugin>
