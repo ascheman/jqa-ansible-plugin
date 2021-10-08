@@ -5,11 +5,15 @@
     <description>Provides a scanner for CSV file.</description>
     <model>
         <class>net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleDescriptor</class>
+        <class>net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleDirectoryDescriptor</class>
         <class>net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleGroupDescriptor</class>
         <class>net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleHostDescriptor</class>
         <class>net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleInventoryDescriptor</class>
         <class>net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleVariableDescriptor</class>
     </model>
+    <scope>
+        <class>net.aschemann.jqassistant.plugin.ansible.api.AnsibleScope</class>
+    </scope>
     <scanner>
         <class>net.aschemann.jqassistant.plugin.ansible.impl.scanner.AnsibleInventoryFileScannerPlugin</class>
         <class>net.aschemann.jqassistant.plugin.ansible.impl.scanner.AnsibleInventoryDirectoryScannerPlugin</class>

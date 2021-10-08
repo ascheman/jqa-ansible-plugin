@@ -5,7 +5,6 @@ import com.buschmais.jqassistant.core.scanner.api.ScannerContext;
 import com.buschmais.jqassistant.core.scanner.api.ScannerPlugin;
 import com.buschmais.jqassistant.core.scanner.api.Scope;
 import com.buschmais.jqassistant.core.store.api.Store;
-import com.buschmais.jqassistant.plugin.common.api.model.DirectoryDescriptor;
 import com.buschmais.jqassistant.plugin.common.api.model.FileDescriptor;
 import com.buschmais.jqassistant.plugin.common.api.scanner.AbstractScannerPlugin;
 import com.buschmais.jqassistant.plugin.common.api.scanner.filesystem.FileResource;
@@ -16,8 +15,9 @@ import net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleInventoryDescri
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.IOException;
+
+import static net.aschemann.jqassistant.plugin.ansible.api.AnsibleScope.INVENTORY;
 
 @ScannerPlugin.Requires({FileDescriptor.class})
 public class AnsibleInventoryFileScannerPlugin extends AbstractScannerPlugin<FileResource, AnsibleDescriptor> {
@@ -26,9 +26,8 @@ public class AnsibleInventoryFileScannerPlugin extends AbstractScannerPlugin<Fil
 
     @Override
     public boolean accepts(FileResource item, String path, Scope scope) {
-        File inventory = new File(path);
         String lowercasePath = path.toLowerCase();
-        boolean decision = lowercasePath.endsWith("inventory") && !inventory.isDirectory();
+        boolean decision = lowercasePath.endsWith("inventory") || INVENTORY.equals(scope);
         LOGGER.debug("Ansible: Checking '{}' ('{}') for acceptance: {}", path, lowercasePath, decision);
         return decision;
     }

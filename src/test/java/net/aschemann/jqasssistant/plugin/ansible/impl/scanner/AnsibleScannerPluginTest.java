@@ -1,15 +1,14 @@
 package net.aschemann.jqasssistant.plugin.ansible.impl.scanner;
 
-import com.buschmais.jqassistant.core.scanner.api.DefaultScope;
 import com.buschmais.jqassistant.core.store.api.model.Descriptor;
 import com.buschmais.jqassistant.plugin.common.test.AbstractPluginIT;
 import net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleInventoryDescriptor;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 
+import static net.aschemann.jqassistant.plugin.ansible.api.AnsibleScope.INVENTORY;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SuppressWarnings("OptionalGetWithoutIsPresent")
@@ -24,7 +23,7 @@ class AnsibleScannerPluginTest extends AbstractPluginIT {
     }
 
     @Test
-    @Disabled ("Until File/Directory problem with inventories is solved")
+//  @Disabled ("Until File/Directory problem with inventories is solved")
     public void scanInventoryDirectory() throws IOException {
         scanInventory(new File(getClassesDirectory(AnsibleScannerPluginTest.class), VAGRANT_INVENTORY_DIRECTORY));
     }
@@ -32,7 +31,7 @@ class AnsibleScannerPluginTest extends AbstractPluginIT {
     private void scanInventory(final File testFile) throws IOException {
         store.beginTransaction();
         // Scan the Ansible Inventory file and assert that the returned descriptor is a AnsibleDescriptor
-        Descriptor descriptor = getScanner().scan(testFile, testFile.getCanonicalPath(), DefaultScope.NONE);
+        Descriptor descriptor = getScanner().scan(testFile, testFile.getCanonicalPath(), INVENTORY);
         assertThat(descriptor).isInstanceOf(AnsibleInventoryDescriptor.class);
 
         AnsibleInventoryDescriptor inventory = (AnsibleInventoryDescriptor) descriptor;
