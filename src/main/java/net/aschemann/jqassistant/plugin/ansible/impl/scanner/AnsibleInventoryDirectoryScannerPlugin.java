@@ -1,61 +1,40 @@
 package net.aschemann.jqassistant.plugin.ansible.impl.scanner;
 
-import com.buschmais.jqassistant.core.scanner.api.Scanner;
 import com.buschmais.jqassistant.core.scanner.api.ScannerContext;
-import com.buschmais.jqassistant.core.scanner.api.ScannerPlugin;
 import com.buschmais.jqassistant.core.scanner.api.Scope;
 import com.buschmais.jqassistant.core.store.api.Store;
-import com.buschmais.jqassistant.plugin.common.api.model.DirectoryDescriptor;
-import com.buschmais.jqassistant.plugin.common.api.model.FileDescriptor;
-import com.buschmais.jqassistant.plugin.common.api.scanner.AbstractScannerPlugin;
-import com.buschmais.jqassistant.plugin.common.api.scanner.filesystem.DirectoryResource;
-import com.buschmais.jqassistant.plugin.common.api.scanner.filesystem.FileResource;
+import com.buschmais.jqassistant.plugin.common.api.scanner.AbstractDirectoryScannerPlugin;
 import net.aschemann.ansible.inventory.type.AnsibleInventory;
 import net.aschemann.ansible.inventory.util.AnsibleInventoryReader;
-import net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleDescriptor;
-import net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleInventoryDescriptor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleDirectoryDescriptor;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 
-@ScannerPlugin.Requires({DirectoryDescriptor.class})
-public class AnsibleInventoryDirectoryScannerPlugin extends AbstractScannerPlugin<DirectoryResource, AnsibleDescriptor> {
+import static net.aschemann.jqassistant.plugin.ansible.api.AnsibleScope.INVENTORY;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AnsibleInventoryDirectoryScannerPlugin.class);
+public class AnsibleInventoryDirectoryScannerPlugin extends AbstractDirectoryScannerPlugin<AnsibleDirectoryDescriptor> {
 
     @Override
-    public boolean accepts(DirectoryResource item, String path, Scope scope) {
-        File inventory = null;
-        try {
-            inventory = item.getFile();
-        } catch (IOException e) {
-            LOGGER.warn("Ansible: This directory is not (java.io) File based: '{}' (Skipping)", path, e);
-            return false;
-        }
-        // new File(path);
-        File hosts = new File(inventory, "hosts");
-        String lowercasePath = path.toLowerCase();
-        boolean decision = lowercasePath.endsWith("inventory") && inventory.isDirectory() && hosts.exists();
-        LOGGER.debug("Ansible: Checking '{}' ('{}') for acceptance: {}", path, lowercasePath, decision);
-        return decision;
+    protected Scope getRequiredScope() {
+        return INVENTORY;
     }
 
     @Override
-    public AnsibleDescriptor scan(DirectoryResource item, String path, Scope scope, Scanner scanner) throws IOException {
-        ScannerContext context = scanner.getContext();
-        LOGGER.debug("Ansible: Creating new inventory from '{}'", item.getFile().toPath());
-        final Store store = context.getStore();
-        final FileDescriptor fileDescriptor = context.getCurrentDescriptor();
-        final AnsibleInventoryDescriptor ansibleInventoryDescriptor = store.addDescriptorType(fileDescriptor,
-                AnsibleInventoryDescriptor.class);
-        AnsibleInventory ansibleInventory =
-                AnsibleInventoryReader.read(item.getFile().toPath());
+    protected AnsibleDirectoryDescriptor getContainerDescriptor(File container, ScannerContext scannerContext) {
+        return scannerContext.getStore().create(AnsibleDirectoryDescriptor.class);
+    }
+
+    @Override
+    protected void enterContainer(File container, AnsibleDirectoryDescriptor ansibleInventoryDescriptor, ScannerContext scannerContext) throws IOException {
+        Store store = scannerContext.getStore();
+        AnsibleInventory ansibleInventory = AnsibleInventoryReader.read(container.toPath());
         ansibleInventory.getHosts().forEach(ansibleHost -> AbstractAnsibleScannerPlugin.add(ansibleInventoryDescriptor, ansibleHost, store));
         ansibleInventory.getGroups().forEach(ansibleGroup -> AbstractAnsibleScannerPlugin.add(ansibleInventoryDescriptor, ansibleGroup, store));
-        return ansibleInventoryDescriptor;
+    }
+
+    @Override
+    protected void leaveContainer(File container, AnsibleDirectoryDescriptor containerDescriptor, ScannerContext scannerContext) {
     }
 
 }
