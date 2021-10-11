@@ -23,7 +23,7 @@ class AnsibleScannerPluginTest extends AbstractPluginIT {
     }
 
     @Test
-    @TestStore(type = TestStore.Type.REMOTE)
+//  @TestStore(type = TestStore.Type.REMOTE) --> just run "mvn jqassistant:server" on command line, test will use that database then
 //  @Disabled ("Until File/Directory problem with inventories is solved")
     public void scanInventoryDirectory() throws IOException {
         scanInventory(new File(getClassesDirectory(AnsibleScannerPluginTest.class), VAGRANT_INVENTORY_DIRECTORY));
