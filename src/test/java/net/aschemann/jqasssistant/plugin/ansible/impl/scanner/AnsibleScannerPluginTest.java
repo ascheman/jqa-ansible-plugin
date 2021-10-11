@@ -23,15 +23,17 @@ class AnsibleScannerPluginTest extends AbstractPluginIT {
     }
 
     @Test
+    @TestStore(type = TestStore.Type.REMOTE)
 //  @Disabled ("Until File/Directory problem with inventories is solved")
     public void scanInventoryDirectory() throws IOException {
         scanInventory(new File(getClassesDirectory(AnsibleScannerPluginTest.class), VAGRANT_INVENTORY_DIRECTORY));
     }
 
     private void scanInventory(final File testFile) throws IOException {
-        store.beginTransaction();
         // Scan the Ansible Inventory file and assert that the returned descriptor is a AnsibleDescriptor
         Descriptor descriptor = getScanner().scan(testFile, testFile.getCanonicalPath(), INVENTORY);
+
+        store.beginTransaction();
         assertThat(descriptor).isInstanceOf(AnsibleInventoryDescriptor.class);
 
         AnsibleInventoryDescriptor inventory = (AnsibleInventoryDescriptor) descriptor;

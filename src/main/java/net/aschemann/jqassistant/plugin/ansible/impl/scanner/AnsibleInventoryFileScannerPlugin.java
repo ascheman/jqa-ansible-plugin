@@ -27,7 +27,7 @@ public class AnsibleInventoryFileScannerPlugin extends AbstractScannerPlugin<Fil
     @Override
     public boolean accepts(FileResource item, String path, Scope scope) {
         String lowercasePath = path.toLowerCase();
-        boolean decision = lowercasePath.endsWith("inventory") || INVENTORY.equals(scope);
+        boolean decision = lowercasePath.endsWith("inventory");
         LOGGER.debug("Ansible: Checking '{}' ('{}') for acceptance: {}", path, lowercasePath, decision);
         return decision;
     }
