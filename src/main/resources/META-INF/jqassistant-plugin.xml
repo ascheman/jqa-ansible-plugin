@@ -2,7 +2,7 @@
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     xsi:schemaLocation="http://schema.jqassistant.org/plugin/v1.8 https://schema.jqassistant.org/plugin/jqassistant-plugin-v1.8.xsd"
                     name="Ansible">
-    <description>Provides a scanner for CSV file.</description>
+    <description>Provides a scanner for Ansible (inventory) files.</description>
     <model>
         <class>net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleDescriptor</class>
         <class>net.aschemann.jqassistant.plugin.ansible.api.model.AnsibleGroupDescriptor</class>
