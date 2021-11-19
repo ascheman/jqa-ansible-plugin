@@ -39,11 +39,10 @@
 
         <ansible-inventory.version>1.0-SNAPSHOT</ansible-inventory.version>
         <assertj-core.version>3.21.0</assertj-core.version>
-        <jqa.version>1.10.1</jqa.version>
+        <jqa.version>1.12.0-SNAPSHOT</jqa.version>
         <junit-jupiter-engine.version>5.8.1</junit-jupiter-engine.version>
         <log4j-slf4j-impl.version>2.14.1</log4j-slf4j-impl.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-        <slf4j-simple.version>1.8.0-beta4</slf4j-simple.version>
     </properties>
 
     <repositories>
@@ -78,6 +77,18 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.buschmais.jqassistant</groupId>
+                <artifactId>jqa-bom</artifactId>
+                <version>${jqa.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -148,7 +159,6 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j-simple.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
