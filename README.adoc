@@ -26,6 +26,15 @@ Expect changes in the API and implementation without prior notice._
 
 == Getting started
 
+[WARNING]
+.Please note the 0.x version numbering and SNAPSHOTs
+====
+Please note, that the plugin versioning follows https://semver.org[Semantic Versioning] but starts with a 0.
+Hence, the API and features are not yet stable and may change with every minor version upgrade without prior notice.
+In particular, SNAPSHOT versions can be very unstable due to the very nature of branch based uploads to Maven repositories.
+====
+
+
 === Build / Install
 
 First versions are available via
