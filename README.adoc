@@ -28,14 +28,24 @@ Expect changes in the API and implementation without prior notice._
 
 === Build / Install
 
-Currently it is necessary to build it locally:
+First versions are available via
 
-* Clone and build https://github.com/ascheman/ansible-inventory-java/[Ansible Inventory Java]:
+[source, xml]
+include::pom.xml[tags=sonatype-url]
+
+as SNAPSHOT
+
+[source, xml]
+include::pom.xml[tags=sonatype-snapshot-repo]
+
+Additionally it is possible to build it locally:
+
+* Clone and build https://github.com/ascheman/ansible-inventory-java/[Ansible Inventory Java] as pre-requisite:
 ** `git clone https://github.com/ascheman/ansible-inventory-java`
 ** `(cd ansible-inventory-java && ./mvnw clean install)`
 * Clone and build the plugin itself
 ** `git clone https://github.com/ascheman/jqa-ansible-plugin`
-** `(cd jqa-ansible-plugin && mvn clean install)`
+** `(cd jqa-ansible-plugin && ./mvnw clean install)`
 
 === Usage
 

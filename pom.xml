@@ -35,7 +35,9 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
 
+        <!-- tag::sonatype-url[] -->
         <oss.sonatype.org.url>https://oss.sonatype.org</oss.sonatype.org.url>
+        <!-- end::sonatype-url[] -->
 
         <ansible-inventory.version>1.0-SNAPSHOT</ansible-inventory.version>
         <assertj-core.version>3.21.0</assertj-core.version>
@@ -61,11 +63,13 @@
             <id>oss.sonatype.org</id>
             <url>${oss.sonatype.org.url}/service/local/staging/deploy/maven2/</url>
         </repository>
+        <!-- tag::sonatype-snapshot-repo[] -->
         <snapshotRepository>
             <id>ossrh</id>
             <url>${oss.sonatype.org.url}/content/repositories/snapshots/</url>
             <layout>default</layout>
         </snapshotRepository>
+        <!-- end::sonatype-snapshot-repo[] -->
     </distributionManagement>
 
     <build>
