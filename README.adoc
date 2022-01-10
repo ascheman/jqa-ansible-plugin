@@ -3,6 +3,7 @@
 :email: gerd@aschemann.net
 
 :toc: left
+:icons: font
 
 Plugin for https://jqassistant.org[jQAssistant] (jQA), a tool suite to analyze arbitrary software structures (Java and other source code, dependencies, Git repositories, and many more).
 Enables to scan https://www.ansible.com/[Ansible] repositories for further analysis and reporting.
@@ -40,7 +41,7 @@ include::pom.xml[tags=sonatype-snapshot-repo]
 
 Additionally it is possible to build it locally:
 
-* Clone and build https://github.com/ascheman/ansible-inventory-java/[Ansible Inventory Java] as pre-requisite:
+* Optionally clone and build https://github.com/ascheman/ansible-inventory-java/[Ansible Inventory Java] as pre-requisite:
 ** `git clone https://github.com/ascheman/ansible-inventory-java`
 ** `(cd ansible-inventory-java && ./mvnw clean install)`
 * Clone and build the plugin itself
