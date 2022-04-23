@@ -43,10 +43,13 @@
 
         <ansible-inventory.version>1.0-SNAPSHOT</ansible-inventory.version>
         <assertj-core.version>3.21.0</assertj-core.version>
-        <jqa.version>1.12.0-SNAPSHOT</jqa.version>
+        <jqa.version>1.11.1</jqa.version>
         <junit-jupiter.version>5.8.1</junit-jupiter.version>
+        <log4j-slf4j-impl.version>2.14.1</log4j-slf4j-impl.version>
         <maven-dependency-plugin.version>3.2.0</maven-dependency-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <slf4j.version>1.7.30</slf4j.version>
+        <xo.neo4j.api.version>1.4.0</xo.neo4j.api.version>
     </properties>
 
     <pluginRepositories>
@@ -111,17 +114,17 @@
         </plugins>
     </build>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.buschmais.jqassistant</groupId>
-                <artifactId>jqa-bom</artifactId>
-                <version>${jqa.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+<!--    <dependencyManagement>-->
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>com.buschmais.jqassistant</groupId>-->
+<!--                <artifactId>jqa-bom</artifactId>-->
+<!--                <version>${jqa.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
+<!--    </dependencyManagement>-->
 
     <dependencies>
         <dependency>
@@ -144,6 +147,7 @@
         <dependency>
             <groupId>com.buschmais.xo</groupId>
             <artifactId>xo.neo4j.api</artifactId>
+            <version>${xo.neo4j.api.version}</version>
         </dependency>
         <dependency>
             <groupId>net.aschemann.ansible</groupId>
@@ -153,6 +157,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
         <!-- Test dependencies -->
         <dependency>
@@ -195,6 +200,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
